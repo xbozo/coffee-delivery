@@ -1,5 +1,5 @@
 import { Coffee, Package, ShoppingCart, Timer } from "@phosphor-icons/react";
-import CoffeeIntro from "../../../../assets/CoffeeIntro.svg";
+import CoffeeIntro from "../../../../assets/images/CoffeeIntro.svg";
 import * as C from "./styles";
 
 export function Intro() {

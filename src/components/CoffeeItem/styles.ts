@@ -35,11 +35,12 @@ export const CoffeeContainer = styled.div`
             padding: 0.5rem;
             border-radius: 8px;
             background-color: var(--yellow-light);
+            text-transform: uppercase;
         }
    }
 
    .coffee-name {
-        margin-top: 0.8rem;
+        margin-top: 2rem;
         font-size: 2.4rem;
         font-weight: 700;
         font-family: 'Baloo 2' cursive;
@@ -59,7 +60,7 @@ export const BuyContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     width: 90%;
-    margin-top: 2.4rem;
+    margin-top: 4rem;
 
     .coffee-price-container {
         width: 7rem;
@@ -84,9 +85,8 @@ export const BuyContainer = styled.div`
 export const BuyActionsContainer = styled.div`
     background-color: var(--base-button);
     border-radius: 8px;
-    padding: 0.8rem;
+    padding: 0.6rem 1rem;
     display: flex;
-    flex: 1;
     justify-content: center;
     gap: 1.6rem;
 
@@ -96,14 +96,20 @@ export const BuyActionsContainer = styled.div`
         gap: 0.8rem;
         border-radius: 8px;
 
-        button svg {
-            color: var(--purple);
-            font-weight: 700;
+        button {
+            background-color: var(--base-button);
 
-            &:hover {
-                cursor: pointer;
+            svg {
+                color: var(--purple);
+                font-weight: 700;
+
+                &:hover {
+                    cursor: pointer;
+                }
             }
         }
+        
+
 
         span {
             font-size: 2rem;
@@ -127,6 +133,4 @@ export const BuyActionsContainer = styled.div`
         }
 
     }
-
-
 `

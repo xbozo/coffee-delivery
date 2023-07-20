@@ -1,5 +1,14 @@
 import styled from "styled-components";
 
+export const StickyHeader = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    background-color: white;
+`
+
 export const Header = styled.header`
     display: flex;
     justify-content: space-between;
@@ -14,6 +23,7 @@ export const Header = styled.header`
         display: flex;
         align-items: center;
         gap: 16px;
+        
 
         span {
             background-color: var(--purple-light);

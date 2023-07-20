@@ -1,26 +1,42 @@
 import { Minus, Plus, ShoppingCartSimple } from "@phosphor-icons/react";
-import Cubano from '../../assets/Type=Cubano.svg';
+import { formatMoney } from "../../utils/formatMoney";
 import * as C from "./styles";
 
 
-export function CoffeeItem() {
+export interface Coffee {
+    id: number;
+    tags: string[];
+    name: string;
+    description: string;
+    photo: string;
+    price: number;
+}
+
+interface CoffeeProps {
+    coffee: Coffee
+}
+
+export function CoffeeItem({ coffee }: CoffeeProps) {
+    const formattedPrice = formatMoney(coffee.price)
+
     return (
         <>
          <C.MainContainer>
             <C.CoffeeContainer>
-                <img src={Cubano} className='coffee-image' />
+                <img src={`/coffees/${coffee.photo}`} className='coffee-image' />
+
                 <div className='tags-container'>
-                    <span className='tags'>Especial</span>
-                    <span className='tags'>Alcoólico</span>
-                    <span className='tags'>Gelado</span>
+                    {coffee.tags.map(tag => (
+                        <span key={`${coffee.id}${tag}`} className='tags'>{tag}</span>
+                    ))}
                 </div>
-                <h2 className='coffee-name'>Chocolate Quente</h2>
-                <p className='description'>Drink gelado de café expresso com rum, creme de leite e hortelã</p>
+                <h2 className='coffee-name'>{coffee.name}</h2>
+                <p className='description'>{coffee.description}</p>
 
                 <C.BuyContainer>
                     <div className='coffee-price-container'>
                         <span className='coffee-real-coin'>R$</span>
-                        <span className='coffee-price'>9,90</span>
+                        <span className='coffee-price'>{formattedPrice}</span>
                     </div>
 
                     <C.BuyActionsContainer>
