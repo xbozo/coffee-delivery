@@ -105,6 +105,7 @@ export const BuyActionsContainer = styled.div`
 
                 &:hover {
                     cursor: pointer;
+                    color: var(--purple-dark);
                 }
             }
         }
@@ -119,6 +120,7 @@ export const BuyActionsContainer = styled.div`
     .cart-icon-container {
         padding: 0.5rem;
         background-color: var(--purple-dark);
+        transition: all 0.15s ease-in-out;
         border-radius: 8px;
         display: flex;
         justify-content: center;
@@ -126,6 +128,7 @@ export const BuyActionsContainer = styled.div`
 
         &:hover {
             cursor: pointer;
+            background-color: var(--purple);
         }
 
         .cart-icon {
