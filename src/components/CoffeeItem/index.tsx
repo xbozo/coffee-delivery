@@ -1,5 +1,8 @@
-import { Minus, Plus, ShoppingCartSimple } from "@phosphor-icons/react";
+import { ShoppingCartSimple } from "@phosphor-icons/react";
+import { useState } from "react";
+import { useCart } from "../../hooks/useCart";
 import { formatMoney } from "../../utils/formatMoney";
+import { QuantityInput } from "./partials/QuantityInput";
 import * as C from "./styles";
 
 
@@ -17,6 +20,26 @@ interface CoffeeProps {
 }
 
 export function CoffeeItem({ coffee }: CoffeeProps) {
+    const [quantity, setQuantity] = useState(1)
+    
+    const { addCoffeeToCart } = useCart()
+    
+    function handleIncrease() {
+        setQuantity((state) => state + 1)
+    }
+
+    function handleDecrease() {
+        setQuantity((state) => state - 1)
+    }
+
+    function handleAddToCart() {
+        const coffeeToAdd = {
+            ...coffee,
+            quantity,
+        }
+        addCoffeeToCart(coffeeToAdd)
+    }
+
     const formattedPrice = formatMoney(coffee.price)
 
     return (
@@ -40,16 +63,13 @@ export function CoffeeItem({ coffee }: CoffeeProps) {
                     </div>
 
                     <C.BuyActionsContainer>
-                        <div className='buy-counter'>
-                            <button>
-                                <Minus size={15} weight="bold" />
-                            </button>
-                            <span>1</span>
-                            <button>
-                                <Plus size={15} weight="bold" />
-                            </button>
-                        </div>
-                        <button className="cart-icon-container">
+                        <QuantityInput 
+                            onIncrease={handleIncrease}
+                            onDecrease={handleDecrease}
+                            quantity={quantity}
+                        />
+
+                        <button className="cart-icon-container" onClick={handleAddToCart}>
                             <ShoppingCartSimple size={22} weight="fill" className='cart-icon' />
                         </button>
                     </C.BuyActionsContainer>

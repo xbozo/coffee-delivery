@@ -29,3 +29,9 @@ export const LeftBottom =  styled.div`
         }
     }
 `
+
+export const PaymentMethodOptions = styled.div`
+    display: flex;
+    justify-content: space-around;
+    gap: 1.2rem;
+`

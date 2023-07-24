@@ -1,5 +1,6 @@
 import { Coffee, Package, ShoppingCart, Timer } from "@phosphor-icons/react";
 import CoffeeIntro from "../../../../assets/images/CoffeeIntro.svg";
+import { InfoWithIcon } from "../../../../components/InfoWithIcon";
 import * as C from "./styles";
 
 export function Intro() {
@@ -11,27 +12,28 @@ export function Intro() {
                     <h4>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</h4>
                 </div>
                 
-                <div className="desc-container">
-                    <span>
-                        <ShoppingCart size={30} weight="fill" className='cart-icon'/>
-                        <p>Compra simples e segura</p>
-                    </span>
-                    <span>
-                        <Package size={30} weight="fill" className='box-icon'/>
-                        <p>Embalagem mantém o café intacto</p>
-                    </span>
-                </div>
-
-                <div className="desc-container">
-                    <span>
-                        <Timer size={30} weight="fill" className="watch-icon" />
-                        <p>Entrega rápida e rastreada</p>
-                    </span>
-                    <span>
-                        <Coffee size={30} weight="fill" className='coffee-icon'/>
-                        <p>O café chega fresquinho até você</p>
-                    </span>
-                </div>
+                <C.BenefitsContainer>
+                    <InfoWithIcon 
+                        iconBgColor="var(--yellow-dark)"
+                        icon={<ShoppingCart weight="fill" size={18} />}
+                        text="Compra simples e segura"
+                    />
+                    <InfoWithIcon 
+                        iconBgColor="var(--base-text)"
+                        icon={<Package weight="fill" size={18} />}
+                        text="Embalagem mantém o café intacto"
+                    />
+                    <InfoWithIcon 
+                        iconBgColor="var(--yellow)"
+                        icon={<Timer weight="fill" size={18} />}
+                        text="Entrega rápida e rastreada"
+                    />
+                    <InfoWithIcon 
+                        iconBgColor="var(--purple)"
+                        icon={<Coffee weight="fill" size={18} />}
+                        text="O café chega fresquinho até você"
+                    />
+                </C.BenefitsContainer>
             </C.MainContainer>
             <img src={CoffeeIntro} />
         </C.SectionContainer>

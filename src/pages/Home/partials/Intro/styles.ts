@@ -35,40 +35,14 @@ export const MainContainer = styled.main`
         display: flex;
         margin-top: 1.6rem;
         min-width: 56rem;
-
-        span {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            width: 30rem;
-
-            .cart-icon {
-                color: #fff;
-                padding: 0.6rem;
-                background-color: var(--yellow-dark);
-                border-radius: 50%;
-            }
-
-            .box-icon {
-                color: #fff;
-                padding: 0.6rem;
-                background-color: var(--base-text);
-                border-radius: 50%;
-            }
-
-            .watch-icon {
-                color: #fff;
-                padding: 0.6rem;
-                background-color: var(--yellow);
-                border-radius: 50%;
-            }
-
-            .coffee-icon {
-                color: #fff;
-                padding: 0.6rem;
-                background-color: var(--purple);
-                border-radius: 50%;
-            }
-        }
     }
 `;
+
+
+export const BenefitsContainer = styled.div`
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 2rem;
+    margin-top: 7rem;
+`

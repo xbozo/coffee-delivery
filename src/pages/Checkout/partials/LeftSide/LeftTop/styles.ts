@@ -80,6 +80,7 @@ export const LeftInputsForm = styled.form`
             position: absolute;
             margin-left: 37rem;
             color: var(--base-label);
+            user-select: none;
         }
     }
 `;

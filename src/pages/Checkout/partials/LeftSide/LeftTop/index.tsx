@@ -1,18 +1,20 @@
 import { MapPinLine } from "phosphor-react";
+import { FormEvent } from "react";
 import { LeftInfo } from "../LeftInfoModel";
 import * as C from "./styles";
 
 
-export function LeftTop() {
+interface LeftTopPropsType {
+    onSubmit: FormEvent
+}
+
+export function LeftTop({ onSubmit }: LeftTopPropsType) {
     return (
         <C.LeftTop>
             <LeftInfo 
                 title="Endereço de Entrega"
                 description="Informe o endereço onde deseja receber seu pedido"
-                icon={MapPinLine}
-                size={25}
-                weight="light"
-                color="var(--yellow-dark)"
+                icon={<MapPinLine size={25} color="var(--yellow-dark)" weight="light" />}
             />
             <C.LeftInputsForm>
                 <div className="cep">
