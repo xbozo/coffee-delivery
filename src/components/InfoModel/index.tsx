@@ -8,7 +8,7 @@ interface PropsType {
     icon: ReactNode;
 }
 
-export function LeftInfo({ title, description, icon}: PropsType) {
+export function InfoModel({ title, description, icon}: PropsType) {
     return (
         <C.InfoContainer>
             {icon}

@@ -1,45 +1,53 @@
-import { Header } from "../../components/Header";
-import { LeftSide } from "./partials/LeftSide";
-import { RightSide } from "./partials/RightSide";
+import { Header } from '../../components/Header';
+import { CheckoutOrderForm } from './CheckoutOrderForm';
+import { SelectedCoffees } from './SelectedCoffees';
 
-import * as C from "./styles";
+import * as C from './styles';
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { FormProvider, useForm } from "react-hook-form";
-import * as zod from "zod";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { FormProvider, useForm } from 'react-hook-form';
+import * as z from 'zod';
 
+enum PaymentMethods {
+  credit = 'credit',
+  debit = 'debit',
+  money = 'money',
+}
 
-const confirmOrderFormValidationSchema = zod.object({
-    cep: zod.string(),
-})
+const confirmOrderFormSchema = z.object({
+  cep: z.string().max(9, 'Informe o CEP'),
+  rua: z.string().min(1, 'Informe a Rua'),
+  numero: z.number().max(4),
+  complemento: z.string().optional(),
+  bairro: z.string().min(1, 'Informe o Bairro'),
+  cidade: z.string().min(1, 'Informe a Cidade'),
+  uf: z.string().max(2, 'Informe a UF'),
+  paymentMethod: z.nativeEnum(PaymentMethods, {
+    errorMap: () => {
+      return { message: 'Informe o método de pagamento' };
+    },
+  }),
+});
 
-export type OrderData = zod.infer<typeof confirmOrderFormValidationSchema>
-
-type ConfirmOrderFormData = OrderData
-
+export type OrderData = z.infer<typeof confirmOrderFormSchema>;
 
 export function Checkout() {
-    const confirmOrderForm = useForm<ConfirmOrderFormData>({
-        resolver: zodResolver(confirmOrderFormValidationSchema),
-    })
+  const methods = useForm({
+    resolver: zodResolver(confirmOrderFormSchema),
+    defaultValues: {
+      paymentMethod: undefined,
+    },
+  });
 
-    const { handleSubmit } = confirmOrderForm
-
-    function handleConfirmOrder(data: ConfirmOrderFormData) {
-        console.log(data)
-    }
-
-    return (
-        <>
-            <Header city="Porto Alegre" geoState="RS" />
-            <FormProvider {...confirmOrderForm}>
-                <C.Container>
-                    <LeftSide onSubmit={handleSubmit(handleConfirmOrder)} />
-                    <RightSide />
-                </C.Container>
-            </FormProvider>
-
-        </>
-
-    )
+  return (
+    <>
+      <Header city="Porto Alegre" geoState="RS" />
+      <FormProvider {...methods}>
+        <C.Container>
+          <CheckoutOrderForm />
+          <SelectedCoffees />
+        </C.Container>
+      </FormProvider>
+    </>
+  );
 }
