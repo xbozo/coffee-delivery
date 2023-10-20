@@ -1,5 +1,13 @@
 import styled from 'styled-components';
 
+export const Container = styled.div`
+  display: flex;
+  gap: 4rem;
+  width: 120rem;
+  justify-content: space-between;
+  margin: 18rem auto;
+`;
+
 export const CheckoutOrderContainer = styled.section`
   flex: 1;
 `;
@@ -40,7 +48,7 @@ export const OrderAddressInfoContainer = styled.div`
   }
 `;
 
-export const OrderInputForm = styled.div`
+export const OrderInputForm = styled.form`
   display: grid;
   grid-template-columns: repeat(4, 14.5rem);
   gap: 1.2rem;
@@ -63,7 +71,6 @@ export const OrderInputForm = styled.div`
     }
   }
 
-  /* Definindo o layout usando grid-template-areas */
   grid-template-areas:
     'cep cep cep cep'
     'rua rua rua rua'
@@ -142,7 +149,7 @@ export const PaymentMethodOptions = styled.div`
   gap: 1.2rem;
 `;
 
-export const PaymentMethodOption = styled.button`
+export const PaymentMethodOption = styled.input`
   padding: 0 1.6rem;
   background: var(--base-button);
   color: var(--base-text);
@@ -171,4 +178,71 @@ export const PaymentMethodOption = styled.button`
   &:focus {
     outline: 1px solid var(--purple);
   }
+`;
+
+// Rightside
+export const RightSideContainer = styled.section``;
+
+export const RTitleContainer = styled.h1`
+  font-family: 'Baloo 2', cursive;
+  font-weight: 700;
+  font-size: 2.2rem;
+  margin-bottom: 1.6rem;
+`;
+
+export const RightContent = styled.div`
+  background-color: var(--base-card);
+  width: 50rem;
+  padding: 4rem;
+  border-radius: 8px;
+
+  .confirm-order {
+    padding: 1.2rem 0.8rem;
+    border-radius: 8px;
+    margin: 0 auto;
+    margin-top: 2.6rem;
+    text-transform: uppercase;
+    background: var(--yellow);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.6rem;
+    width: 100%;
+    transition: 0.2s;
+
+    &:hover {
+      cursor: pointer;
+      background-color: var(--yellow-dark);
+    }
+  }
+`;
+
+export const CoffeeCardContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+`;
+
+export const PriceInfo = styled.div`
+  margin-top: 2.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.6rem;
+  }
+
+  div:nth-child(3) {
+    font-size: 2.2rem;
+    font-weight: 700;
+  }
+`;
+
+export const ButtonContainer = styled.div`
+  text-align: center;
+  padding: 1.2rem 0.8rem;
+  background: var(--yellow);
+  border-radius: 8px;
 `;
